@@ -117,10 +117,10 @@ $harddisk_size = ($data_com["harddisk_size"] !== null) ? $data_com["harddisk_siz
                     <option value="" disabled selected>เลือกหน่วยงาน</option>
                     <?php
                     $get_dep = getDep();
-                    $query_dep = $conn_main->query($get_dep);
+                    $query_dep = $conn_backoffice->query($get_dep);
                     while ($rows = $query_dep->fetch_assoc()) {
-                        $dep_id = $rows["dep_code_id"];
-                        $dep_name = $rows["dep_code_name"];
+                        $dep_id = $rows["dept_id"];
+                        $dep_name = $rows["dept_name"];
                     ?>
                         <option value="<?= $dep_id ?>" <?= ($dep_id === $department) ? "selected" : "" ?>>
                             <?= $dep_name ?>

@@ -1,14 +1,14 @@
 <?php
 
-$HOST_MAIN = "";
-$USER_MAIN = "";
-$PASS_MAIN = '';
-$DBNAME_MAIN = "";
+$HOST_MAIN = "192.168.0.251";
+$USER_MAIN = "sgdev";
+$PASS_MAIN = '$Guk4210';
+$DBNAME_MAIN = "db_computer";
 
-$HOST = "";
-$USER = "";
-$PASS = '';
-$DBNAME = "";
+$HOST = "192.168.77.13";
+$USER = "sa";
+$PASS = 'sa';
+$DBNAME = "backoffice_db";
 
 $conn_main = new mysqli(
     $HOST_MAIN,

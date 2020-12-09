@@ -26,8 +26,11 @@ if (isset($_POST["is_submit"])) {
             "computer_sn" => $_POST["equip"],
             "computer_name" => $_POST["cname"],
             "computer_ip" => $_POST["ipaddress"],
+            "dept_id" => $_POST["department"],
+            "dept_addr" => $_POST["detail"],
             "cpu_speed" => $_POST["cpu"],
             "ram_size" => $_POST["ram"],
+            "hardisk_size" => $_POST["harddisk_type"] . " " . $_POST["harddisk_size"],
             "status" => 1,
         ];
         $condition = "Com_number = '{$_POST["cnum"]}'";
@@ -63,10 +66,10 @@ if (isset($_POST["is_submit"])) {
             $sql = getComputerBarcode($fix_com_barcode);
             $query = $conn_backoffice->query($sql);
             $getData = $query->fetch_assoc();
-            if ($getData["computer_barcode"] !== null) { 
+            if ($getData["computer_barcode"] !== null) {
                 $sub_str = substr($getData["computer_barcode"], 5);
                 $number = (int)$sub_str + 1;
-                $order = str_pad($number, 4, '0', STR_PAD_LEFT); 
+                $order = str_pad($number, 4, '0', STR_PAD_LEFT);
                 $pattern_com_barcode = $fix_com_barcode . $order;
             } else {
                 $pattern_com_barcode = $fix_com_barcode . $new_order;
@@ -78,21 +81,26 @@ if (isset($_POST["is_submit"])) {
                 "computer_date" => "NOW()",
                 "computer_name" => $_POST["cname"],
                 "computer_ip" => $_POST["ipaddress"],
+                "dept_id" => $_POST["department"],
+                "dept_addr" => $_POST["detail"],
                 "cpu_speed" => $_POST["cpu"],
                 "ram_size" => $_POST["ram"],
+                "hardisk_size" => $_POST["harddisk_type"] . " " . $_POST["harddisk_size"],
                 "status" => 1,
             ];
-
             $query_cr_computer = Insert("cr_computer", $arrCrComputer);
             $insert_cr_computer = $conn_backoffice->query($query_cr_computer);
-        }else{
+        } else {
             $computer_number = $_POST["cnum"];
             $arrDataCrComputer = [
                 "computer_sn" => $_POST["equip"],
                 "computer_name" => $_POST["cname"],
                 "computer_ip" => $_POST["ipaddress"],
+                "dept_id" => $_POST["department"],
+                "dept_addr" => $_POST["detail"],
                 "cpu_speed" => $_POST["cpu"],
-                "ram_size" => $_POST["ram"]
+                "ram_size" => $_POST["ram"],
+                "hardisk_size" => $_POST["harddisk_type"] . " " . $_POST["harddisk_size"],
             ];
             $condition_cr_com = "computer_barcode = '$computer_number'";
             $query_cr_com_update = Update("cr_computer", $arrDataCrComputer, $condition_cr_com);

@@ -7,14 +7,14 @@
             <thead>
                 <tr>
                     <th class="text-center">#</th>
-                    <th class="text-center">Computer Number</th>
-                    <th class="text-center">Computer Name</th>
-                    <th class="text-center">OS Version</th>
-                    <th class="text-center">RAM</th>
-                    <th class="text-center">CPU</th>
-                    <th class="text-center">IP Address</th>
-                    <th class="text-center">Created at</th>
-                    <th class="text-center" width="15%">Action</th>
+                    <th class="text-center">เลขทะเบียนคอมพิวเตอร์</th>
+                    <th class="text-center">หน่วยงาน</th>
+                    <th class="text-center">ที่ตั้ง</th>
+                    <th class="text-center">ชื่อเครื่อง</th>
+                    <th class="text-center">ระบบปฏิบัติการ</th>
+                    <th class="text-center">ไอพีเครื่อง</th>
+                    <th class="text-center" width="10%">เวลา</th>
+                    <th class="text-center" width="15%">#</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,20 +26,24 @@
                     $com_number = $rs_com["Com_number"];
                     $com_name = $rs_com["Com_name"];
                     $com_osversion = $rs_com["Com_OS_Version"];
-                    $com_ram = $rs_com["Com_RAM"];
-                    $com_cpu = $rs_com["Com_CPU"];
+                    $com_detail = $rs_com["Com_Detail"];
                     $com_ipaddress = $rs_com["Com_IP_Address"];
                     $com_created_at = $rs_com["Com_Date"];
+                    $dept_id = $rs_com["Dep_ID"];
+                    $sql_get_dep = getDepartmentByID($dept_id);
+                    $query_get_dep = $conn_backoffice->query($sql_get_dep);
+                    $data_dept = $query_get_dep->fetch_assoc();
+                    $dept_name = $data_dept["dept_name"];
                 ?>
                     <tr>
                         <td class="text-center"><?= $no ?></td>
                         <td class="text-center"><?= $com_number ?></td>
+                        <td class="text-center"><?= $dept_name ?></td>
+                        <td class="text-center"><?= $com_detail ?></td>
                         <td class="text-center"><?= $com_name ?></td>
                         <td class="text-center"><?= $com_osversion ?></td>
-                        <td class="text-center"><?= $com_ram ?></td>
-                        <td class="text-center"><?= $com_cpu ?></td>
                         <td class="text-center"><?= $com_ipaddress ?></td>
-                        <td class="text-center"><?= $com_created_at ?></td>
+                        <td class="text-center"><?= DateTimeThai($com_created_at) ?></td>
                         <td class="text-center">
                             <a href="?page=main-create&id=<?= $com_number ?>" class="btn btn-warning btn-sm">
                                 <i class="fa fa-edit"></i>

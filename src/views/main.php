@@ -4,6 +4,7 @@ session_start();
 include '../../config/config_db.php';
 include '../models/DepartmentModel.php';
 include '../models/ComputerModel.php';
+include '../functions/_function.php';
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +22,7 @@ include '../models/ComputerModel.php';
 
 <body class="bg-info">
     <!-- initial section form client information -->
-    <div class="container">
+    <div class="container-fluid">
         <br>
         <div class="row">
             <div class="col-12">
