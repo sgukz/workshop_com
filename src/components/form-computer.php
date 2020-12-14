@@ -45,21 +45,22 @@ $harddisk_size = ($data_com["harddisk_size"] !== null) ? $data_com["harddisk_siz
         <form id="form-client">
             <div class="form-group col-4">
                 <label for="cnum" class="text-primary font-weight-bold">เลขทะเบียนคอมพิวเตอร์ ตัวอย่าง C63120001</label>
-                <input type="text" class="form-control " id="cnum" name="cnum" placeholder="Number Computer" value="<?= $cnum ?>" <?= $cnum !== "" ? "readonly" : "" ?>>
+                <input type="text" class="form-control " id="cnum" name="cnum" placeholder="เลขทะเบียนคอมพิวเตอร์" value="<?= $cnum ?>" <?= $cnum !== "" ? "readonly" : "" ?>>
+                <button type="button" class="btn btn-info btn-sm mt-2" id="check_barcode">ตรวจสอบ</button>
             </div>
             <div class="form-group col-4">
                 <label for="equip" class="text-primary font-weight-bold">เลขครุภัณฑ์</label>
-                <input type="text" class="form-control " id="equip" name="equip" placeholder="Computer Equip" value="<?= $equip ?>">
+                <input type="text" class="form-control " id="equip" name="equip" placeholder="เลขครุภัณฑ์" value="<?= $equip ?>">
             </div>
             <div class="form-group col-4">
                 <label for="cname" class="text-primary font-weight-bold"><span>ชื่อเครื่องคอมพิวเตอร์ <strong class="text-danger">*</strong></span> </label>
-                <input type="text" class="form-control " id="cname" name="cname" placeholder="Computer Name" value="<?= $cname ?>" required>
+                <input type="text" class="form-control " id="cname" name="cname" placeholder="ชื่อเครื่องคอมพิวเตอร์" value="<?= $cname ?>" required>
             </div>
             <div class="form-group col-12">
                 <label for="model" class="text-primary font-weight-bold">
                     <spnn>รุ่น/ยี่ห่อ <strong class="text-danger">*</strong></span>
                 </label>
-                <input type="text" class="form-control " id="model" name="model" placeholder="Computer Model" value="<?= $model ?>" required>
+                <input type="text" class="form-control " id="model" name="model" placeholder="รุ่น/ยี่ห่อ" value="<?= $model ?>" required>
             </div>
             <div class="form-group col-12">
                 <label for="ram" class="text-primary font-weight-bold">
@@ -77,19 +78,19 @@ $harddisk_size = ($data_com["harddisk_size"] !== null) ? $data_com["harddisk_siz
                 <label for="osversion" class="text-primary font-weight-bold">
                     <spnn>ระบบปฏิบัติการ <strong class="text-danger">*</strong></span>
                 </label>
-                <input type="text" class="form-control " id="osversion" name="osversion" placeholder="OS Version" value="<?= $osversion ?>" required>
+                <input type="text" class="form-control " id="osversion" name="osversion" placeholder="ระบบปฏิบัติการ" value="<?= $osversion ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="ipaddress" class="text-primary font-weight-bold">
                     <spnn>ไอพีเครื่อง <strong class="text-danger">*</strong></span>
                 </label>
-                <input type="text" class="form-control " id="ipaddress" name="ipaddress" placeholder="IP Address" value="<?= $ipaddress ?>" required>
+                <input type="text" class="form-control " id="ipaddress" name="ipaddress" placeholder="ไอพีเครื่อง" value="<?= $ipaddress ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="harddisk_model" class="text-primary font-weight-bold">
                     <spnn>รุ่นฮาร์ดดิส <strong class="text-danger">*</strong></span>
                 </label>
-                <input type="text" class="form-control " id="harddisk_model" name="harddisk_model" placeholder="Harddisk Model" value="<?= $harddisk_model ?>" required>
+                <input type="text" class="form-control " id="harddisk_model" name="harddisk_model" placeholder="รุ่นฮาร์ดดิส" value="<?= $harddisk_model ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="harddisk_serial" class="text-primary font-weight-bold">
@@ -101,13 +102,13 @@ $harddisk_size = ($data_com["harddisk_size"] !== null) ? $data_com["harddisk_siz
                 <label for="harddisk_type" class="text-primary font-weight-bold">
                     <spnn>ประเภทฮาร์ดดิส <strong class="text-danger">*</strong></span>
                 </label>
-                <input type="text" class="form-control " id="harddisk_type" name="harddisk_type" placeholder="Harddisk Type" value="<?= $harddisk_type ?>" required>
+                <input type="text" class="form-control " id="harddisk_type" name="harddisk_type" placeholder="ประเภทฮาร์ดดิส" value="<?= $harddisk_type ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="harddisk_size" class="text-primary font-weight-bold">
                     <spnn>ขนาดฮาร์ดดิส <strong class="text-danger">*</strong></span>
                 </label>
-                <input type="text" class="form-control " id="harddisk_size" name="harddisk_size" placeholder="Harddisk Size" value="<?= $harddisk_size ?>" required>
+                <input type="text" class="form-control " id="harddisk_size" name="harddisk_size" placeholder="ขนาดฮาร์ดดิส" value="<?= $harddisk_size ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="department" class="text-primary font-weight-bold">

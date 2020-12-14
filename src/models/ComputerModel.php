@@ -71,4 +71,14 @@ function getComputerBarcode($fix_com_barcode)
     return $sql;
 }
 
+function getComputerByBarcode($barcode)
+{
+    $sql = "SELECT * 
+            FROM cr_computer
+            WHERE  computer_barcode = '$barcode'
+            LIMIT 1";
+    return $sql;
+}
+
+
 

@@ -50,6 +50,44 @@ include '../functions/_function.php';
         $(".select-depart").select2();
         $("#show-data-com").DataTable();
 
+        $("#check_barcode").click(function() {
+            let base_url = "../controllers/computer/SeachComputerController.php";
+            let com_num = $("#cnum").val();
+            $.ajax({
+                    method: "GET",
+                    url: base_url,
+                    data: `id=${com_num}`
+                })
+                .done((response) => {
+                    let data = JSON.parse(response);
+                    if (data.status_code === 200) {
+                        if (data.status_com_check > 0) {
+                            window.location = "?page=main-create&cname=" + data.com_name;
+                        } else {
+                            Swal.fire({
+                                title: "แจ้งเตือน",
+                                text: data.text,
+                                icon: data.type,
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            $("#equip").val(data.com_equip);
+                            $("#cname").val(data.com_name);
+                            $("#detail").val(data.com_detail);
+                        }
+                    } else if (data.status_code === 400) {
+                        Swal.fire({
+                            title: "แจ้งเตือน",
+                            text: data.text,
+                            icon: data.type
+                        });
+                    }
+                })
+                .fail((error) => {
+                    console.log(error);
+                })
+        });
+
         $('.delete').click(function() {
             let base_url = "../controllers/computer/DeleteComputer.php";
             let data_comid = $(this).attr('data-comid');
@@ -122,7 +160,7 @@ include '../functions/_function.php';
                         });
                         setTimeout(() => {
                             if (data.section === "add") {
-                                window.location = "?page=main-create&id="+data.data;
+                                window.location = "?page=main-create&id=" + data.data;
                             } else if (data.section === "update") {
                                 window.location.reload();
                             }
