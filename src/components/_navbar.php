@@ -1,4 +1,4 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="#">HOME</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,21 +8,21 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">
-                        User
+                        &nbsp;
                     </a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        <h4>(<?= isset($_SESSION['user_login']) ? $_SESSION['user_login'] : "No login" ?>)</h4>
+                    <a class="nav-link" href="?page=main-showdata">
+                        จัดการคอมพิวเตอร์
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link text-danger " id="logout">
-                        <h4><?= (isset($_SESSION["is_login"]) && $_SESSION["is_login"] == 1) ? "Logout" : "" ?></h4>
+                    <a class="nav-link" href="?page=main-printer">
+                        จัดการปริ้นเตอร์
                     </a>
                 </li>
             </ul>
         </div>
-    </nav> -->
+    </nav>

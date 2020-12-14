@@ -20,7 +20,10 @@ include '../functions/_function.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 </head>
 
-<body class="bg-info">
+<body class="bg-dark">
+    <?php
+    include '../components/_navbar.php';
+    ?>
     <!-- initial section form client information -->
     <div class="container-fluid">
         <br>
@@ -32,6 +35,8 @@ include '../functions/_function.php';
                         include '../components/form-computer.php';
                     } else if ($_GET["page"] === "main-showdata") {
                         include '../components/showdata-computer.php';
+                    } else if ($_GET["page"] === "main-printer") {
+                        include '../components/form-printer.php';
                     }
                 }
                 ?>
@@ -44,140 +49,13 @@ include '../functions/_function.php';
 <script src="../../assets/js/jquery-3.5.1.min.js"></script>
 <script src="../../assets/js/select2.min.js"></script>
 <script src="../../assets/js/jquery.dataTables.min.js"></script>
+<script src="../functions/js/printer.js"></script>
+<script src="../functions/js/computer.js"></script>
 
 <script>
     $(document).ready(() => {
         $(".select-depart").select2();
         $("#show-data-com").DataTable();
-
-        $("#check_barcode").click(function() {
-            let base_url = "../controllers/computer/SeachComputerController.php";
-            let com_num = $("#cnum").val();
-            $.ajax({
-                    method: "GET",
-                    url: base_url,
-                    data: `id=${com_num}`
-                })
-                .done((response) => {
-                    let data = JSON.parse(response);
-                    if (data.status_code === 200) {
-                        if (data.status_com_check > 0) {
-                            window.location = "?page=main-create&cname=" + data.com_name;
-                        } else {
-                            Swal.fire({
-                                title: "แจ้งเตือน",
-                                text: data.text,
-                                icon: data.type,
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            $("#equip").val(data.com_equip);
-                            $("#cname").val(data.com_name);
-                            $("#detail").val(data.com_detail);
-                        }
-                    } else if (data.status_code === 400) {
-                        Swal.fire({
-                            title: "แจ้งเตือน",
-                            text: data.text,
-                            icon: data.type
-                        });
-                    }
-                })
-                .fail((error) => {
-                    console.log(error);
-                })
-        });
-
-        $('.delete').click(function() {
-            let base_url = "../controllers/computer/DeleteComputer.php";
-            let data_comid = $(this).attr('data-comid');
-            Swal.fire({
-                title: "แจ้งเตือน",
-                text: `คุณต้องการข้อมูล หมายเลขคอมพิวเตอร์ ${data_comid} ใช่หรือไม่?`,
-                showCancelButton: true,
-                confirmButtonText: `ใช่`,
-                denyButtonText: `ไม่ใช่`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                            method: "GET",
-                            url: base_url,
-                            data: `id=${data_comid}`
-                        })
-                        .done((response) => {
-                            let data = JSON.parse(response);
-                            if (data.status_code === 200) {
-                                Swal.fire({
-                                    title: "แจ้งเตือน",
-                                    text: data.text,
-                                    icon: data.type
-                                });
-                                setTimeout(() => {
-                                    window.location.reload();
-                                }, 1500);
-                            } else {
-                                Swal.fire({
-                                    title: "เกิดข้อผิดพลาด !!!",
-                                    text: data.text,
-                                    icon: data.type
-                                });
-                            }
-                        })
-                        .fail((error) => {
-                            console.log(error);
-                        })
-                }
-            })
-        });
-
-        $("#logout").click(() => {
-            Swal.fire({
-                title: 'คุณต้องการออกจากระบบใช่หรือไม่?',
-                showCancelButton: true,
-                confirmButtonText: `ใช่`,
-                denyButtonText: `ไม่ใช่`,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location = "../controllers/logout.php";
-                }
-            })
-        });
-
-        $("#form-client").submit((event) => {
-            let base_url = "../controllers/computer/ComputerController.php";
-            $.ajax({
-                    method: "POST",
-                    url: base_url,
-                    data: $("#form-client").serialize()
-                })
-                .done((response) => {
-                    let data = JSON.parse(response);
-                    if (data.status_code === 200) {
-                        Swal.fire({
-                            "title": "แจ้งเตือน",
-                            "text": data.msg,
-                            "icon": data.type
-                        });
-                        setTimeout(() => {
-                            if (data.section === "add") {
-                                window.location = "?page=main-create&id=" + data.data;
-                            } else if (data.section === "update") {
-                                window.location.reload();
-                            }
-                        }, 2000);
-                    } else {
-                        Swal.fire({
-                            "title": "แจ้งเตือน",
-                            "text": data.text,
-                            "icon": data.type
-                        });
-                    }
-                })
-                .fail((error) => {
-                    console.log(JSON.parse(error));
-                });
-            event.preventDefault();
-        });
     });
 </script>
 

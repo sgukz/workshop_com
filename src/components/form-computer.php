@@ -58,61 +58,61 @@ $harddisk_size = ($data_com["harddisk_size"] !== null) ? $data_com["harddisk_siz
             </div>
             <div class="form-group col-12">
                 <label for="model" class="text-primary font-weight-bold">
-                    <spnn>รุ่น/ยี่ห่อ <strong class="text-danger">*</strong></span>
+                    <span>รุ่น/ยี่ห่อ <strong class="text-danger">*</strong></span>
                 </label>
                 <input type="text" class="form-control " id="model" name="model" placeholder="รุ่น/ยี่ห่อ" value="<?= $model ?>" required>
             </div>
             <div class="form-group col-12">
                 <label for="ram" class="text-primary font-weight-bold">
-                    <spnn>หน่วยความจำ (RAM) <strong class="text-danger">*</strong></span>
+                    <span>หน่วยความจำ (RAM) <strong class="text-danger">*</strong></span>
                 </label>
                 <input type="text" class="form-control " id="ram" name="ram" placeholder="RAM" value="<?= $ram ?>" required>
             </div>
             <div class="form-group col-12">
                 <label for="cpu" class="text-primary font-weight-bold">
-                    <spnn>หน่วยประมวลผล (CPU) <strong class="text-danger">*</strong></span>
+                    <span>หน่วยประมวลผล (CPU) <strong class="text-danger">*</strong></span>
                 </label>
                 <input type="text" class="form-control " id="cpu" name="cpu" placeholder="CPU" value="<?= $cpu ?>" required>
             </div>
             <div class="form-group col-12">
                 <label for="osversion" class="text-primary font-weight-bold">
-                    <spnn>ระบบปฏิบัติการ <strong class="text-danger">*</strong></span>
+                    <span>ระบบปฏิบัติการ <strong class="text-danger">*</strong></span>
                 </label>
                 <input type="text" class="form-control " id="osversion" name="osversion" placeholder="ระบบปฏิบัติการ" value="<?= $osversion ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="ipaddress" class="text-primary font-weight-bold">
-                    <spnn>ไอพีเครื่อง <strong class="text-danger">*</strong></span>
+                    <span>ไอพีเครื่อง <strong class="text-danger">*</strong></span>
                 </label>
                 <input type="text" class="form-control " id="ipaddress" name="ipaddress" placeholder="ไอพีเครื่อง" value="<?= $ipaddress ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="harddisk_model" class="text-primary font-weight-bold">
-                    <spnn>รุ่นฮาร์ดดิส <strong class="text-danger">*</strong></span>
+                    <span>รุ่นฮาร์ดดิส <strong class="text-danger">*</strong></span>
                 </label>
                 <input type="text" class="form-control " id="harddisk_model" name="harddisk_model" placeholder="รุ่นฮาร์ดดิส" value="<?= $harddisk_model ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="harddisk_serial" class="text-primary font-weight-bold">
-                    <spnn>ฮาร์ดดิส Serial Number <strong class="text-danger">*</strong></span>
+                    <span>ฮาร์ดดิส Serial Number <strong class="text-danger">*</strong></span>
                 </label>
                 <input type="text" class="form-control " id="harddisk_serial" name="harddisk_serial" placeholder="Serial Number" value="<?= $harddisk_serial ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="harddisk_type" class="text-primary font-weight-bold">
-                    <spnn>ประเภทฮาร์ดดิส <strong class="text-danger">*</strong></span>
+                    <span>ประเภทฮาร์ดดิส <strong class="text-danger">*</strong></span>
                 </label>
                 <input type="text" class="form-control " id="harddisk_type" name="harddisk_type" placeholder="ประเภทฮาร์ดดิส" value="<?= $harddisk_type ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="harddisk_size" class="text-primary font-weight-bold">
-                    <spnn>ขนาดฮาร์ดดิส <strong class="text-danger">*</strong></span>
+                    <span>ขนาดฮาร์ดดิส <strong class="text-danger">*</strong></span>
                 </label>
                 <input type="text" class="form-control " id="harddisk_size" name="harddisk_size" placeholder="ขนาดฮาร์ดดิส" value="<?= $harddisk_size ?>" required>
             </div>
             <div class="form-group col-6">
                 <label for="department" class="text-primary font-weight-bold">
-                    <spnn>หน่วยงาน <strong class="text-danger">*</strong></span>
+                    <span>หน่วยงาน <strong class="text-danger">*</strong></span>
                 </label>
                 <select name="department" id="department" class="form-control select-depart" required>
                     <option value="" disabled selected>เลือกหน่วยงาน</option>

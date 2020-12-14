@@ -2,7 +2,7 @@
 include '../../../config/config_db.php';
 include '../../models/ComputerModel.php';
 
-$barcode = $_GET["id"];
+$barcode = strtoupper(trim($_GET["id"])); //C63020001
 $sql_barcode = getComputerByBarcode($barcode);
 $query_barcode = $conn_backoffice->query($sql_barcode);
 $num_row = $query_barcode->num_rows;
@@ -19,6 +19,7 @@ if($num_row > 0){
     }else{
         $computer_name = $data_com["computer_name"];
     }
+    
     $resp = [
         "status_code" => 200,
         "com_number" => $data_com["computer_barcode"],
