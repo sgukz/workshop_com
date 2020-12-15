@@ -34,12 +34,13 @@ $p_detail = $data_printer["printer_detail"];
                 <input type="text" class="form-control " id="p_equip" name="p_equip" placeholder="เลขครุภัณฑ์ ปริ้นเตอร์" value="<?= $p_equip ?>">
             </div>
             <div class="form-group col-2">
+
                 <label for="p_brand" class="text-primary font-weight-bold"><span>ยี่ห้อ (Brand) <strong class="text-danger">*</strong></span> </label>
                 <select name="p_brand" id="p_brand" class="form-control select2">
                     <option value="0" selected disabled>เลือกยี่ห้อปริ้นเตอร์</option>
                     <?php
                     $data_brand = DataBrand();
-                    foreach ($data_brand as $key => $value) {
+                    foreach ($data_brand as $index => $value) {
                     ?>
                         <option value="<?= $value ?>" <?= ($p_brand === $value) ? "selected" : "" ?>><?= $value ?></option>
                     <?php
@@ -85,10 +86,10 @@ $p_detail = $data_printer["printer_detail"];
             </div>
             <div class="form-group col-6">
                 <label for="detail" class="text-primary font-weight-bold">ตำแหน่งที่ตั้ง</label>
-                <textarea class="form-control" id="p_detail" name="p_detail" cols="15" rows="5"><?=$p_detail?></textarea>
+                <textarea class="form-control" id="p_detail" name="p_detail" cols="15" rows="5"><?= $p_detail ?></textarea>
             </div>
             <div class="form-group col-6">
-                <input type="hidden" name="is_add_new" value="<?=count($data_printer > 0)? "2" : "1"?>">
+                <input type="hidden" name="is_add_new" value="<?= ($printer_id === "") ? "add" : "update" ?>">
                 <button type="submit" class="btn <?= $printer_id !== "" ? "btn-warning" : "btn-success" ?>">
                     <?= $printer_id !== "" ? "Save change" : "Save add" ?>
                 </button>

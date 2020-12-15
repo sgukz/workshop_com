@@ -20,6 +20,8 @@ include '../functions/_function.php';
     <link rel="stylesheet" href="../../assets/css/jquery.dataTables.min.css">
     <link rel="icon" href="../../assets/img/icon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -61,8 +63,8 @@ include '../functions/_function.php';
         $(".select2").select2();
         $("#show-data").DataTable({
             "lengthMenu": [
-                [25, 50, 100, -1],
-                [25, 50, 100, "All"]
+                [10,25, 50, 100, -1],
+                [10, 25, 50, 100, "ทั้งหมด"]
             ],
             "oLanguage": {
                 "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",

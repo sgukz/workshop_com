@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Roi-Et Hospital</a>
+        <a class="navbar-brand font-weight-bold" href="#">Roi-Et Hospital</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,12 +29,12 @@
             ?>
             <ul class="navbar-nav">
                 <li class="nav-item <?=$active_com?>">
-                    <a class="nav-link <?=$color_com?>" href="?page=showdata-computer">
+                    <a class="nav-link <?=$color_com?> font-weight-bold" href="?page=showdata-computer">
                         จัดการคอมพิวเตอร์
                     </a>
                 </li>
                 <li class="nav-item <?=$active_print?>">
-                    <a class="nav-link <?=$color_print?>" href="?page=showdata-printer">
+                    <a class="nav-link <?=$color_print?> font-weight-bold" href="?page=showdata-printer">
                         จัดการปริ้นเตอร์
                     </a>
                 </li>

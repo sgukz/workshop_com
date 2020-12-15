@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION["user_login"])){
+        header("Location: src/views/main.php?page=showdata-computer");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +14,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.lumen.css">
     <link rel="icon" href="assets/img/icon.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap" rel="stylesheet">
     <!-- Custom Stylesheet  -->
     <style>
         body {

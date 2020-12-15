@@ -4,7 +4,7 @@ include '../../models/ComputerModel.php';
 include '../../models/PrinterModel.php';
 $pattern_printer_barcode = "";
 // is_add_new = 1 ### This is add data new
-if ($_POST["is_add_new"] == 1) {
+if ($_POST["is_add_new"] == "add") {
     if ($_POST["pnum"] === "") {
         $year_ = (int)date("y") + 43;
         $month_ = (int)date("m");
@@ -88,7 +88,7 @@ if ($_POST["is_add_new"] == 1) {
             "sql" => $query_add_printer
         ];
     }
-} else if ($_POST["is_add_new"] == 2) {
+} else if ($_POST["is_add_new"] == "update") {
     $pnum = $_POST["pnum"];
     $condition_cr_printer = "printer_barcode = '$pnum'";
     $condition_printer = "printer_id = '$pnum'";
