@@ -59,7 +59,26 @@ include '../functions/_function.php';
 <script>
     $(document).ready(() => {
         $(".select2").select2();
-        $("#show-data").DataTable();
+        $("#show-data").DataTable({
+            "lengthMenu": [
+                [25, 50, 100, -1],
+                [25, 50, 100, "All"]
+            ],
+            "oLanguage": {
+                "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
+                "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
+                "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
+                "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
+                "sSearch": "ค้นหา :",
+                "oPaginate": {
+                    "sFirst": "หน้าแรก",
+                    "sLast": "หน้าสุดท้าย",
+                    "sNext": "ถัดไป",
+                    "sPrevious": "ย้อนกลับ",
+                }
+            }
+        });
     });
 </script>
 
