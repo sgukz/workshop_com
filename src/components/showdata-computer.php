@@ -1,9 +1,10 @@
 <div class="card bg-light">
     <div class="card-header">
-        <h3 class="text-danger font-weight-bold">Data Informations</h3>
+        <h4 class="text-success font-weight-bold">รายการคอมพิวเตอร์ทั้งหมด</h4>
     </div>
     <div class="card-body">
-        <table class="table" id="show-data-com">
+        <a href="?page=computer-create" class="btn btn-success btn-xl mb-3"><i class="fa fa-plus"></i> เพิ่มคอมพิวเตอร์</a>
+        <table class="table" id="show-data">
             <thead>
                 <tr>
                     <th class="text-center">#</th>
@@ -48,7 +49,7 @@
                             <a href="?page=main-create&id=<?= $com_number ?>" class="btn btn-warning btn-sm">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a href="#" class="btn btn-danger btn-sm delete" data-comid="<?= $com_number ?>">
+                            <a href="#" class="btn btn-danger btn-sm delete-computer" data-comid="<?= $com_number ?>">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>

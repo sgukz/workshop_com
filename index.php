@@ -91,7 +91,7 @@
                                 "icon": data.type
                             })
                             setTimeout(() => {
-                                window.location = "src/views/main.php?page=main-showdata";
+                                window.location = "src/views/main.php?page=showdata-computer";
                             }, 1000)
                         } else {
                             Swal.fire({

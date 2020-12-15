@@ -10,3 +10,15 @@ function DateTimeThai($strDate)
     $strMonthThai = $strMonthCut[$strMonth];
     return "$strDay $strMonthThai $strYear, $strHour:$strMinute";
 }
+
+function DataBrand()
+{
+    $item = [
+        "Canon",
+        "HP",
+        "Epson",
+        "Brother",
+        "XEROX",
+    ];
+    return $item;
+}

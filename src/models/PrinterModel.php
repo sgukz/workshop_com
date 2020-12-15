@@ -1,4 +1,10 @@
 <?php
+function getPrinterAll()
+{
+    $sql = "SELECT * FROM printer ORDER BY created_date DESC";
+    return $sql;
+}
+
 function getCheckPrinterById($printer_id)
 {
     $sql = "SELECT * 
@@ -7,6 +13,7 @@ function getCheckPrinterById($printer_id)
             LIMIT 1";
     return $sql;
 }
+
 function getPrinterById($printer_barcode)
 {
     $sql = "SELECT * 
@@ -23,5 +30,11 @@ function getPrinterByBarcode($fix_printer_barcode)
                     WHERE  printer_barcode LIKE '%$fix_printer_barcode%'
                     ORDER BY printer_barcode DESC
                     LIMIT 1";
+    return $sql;
+}
+
+function DeletePrinter($id)
+{
+    $sql = "DELETE FROM printer WHERE printer_id = '$id'";
     return $sql;
 }

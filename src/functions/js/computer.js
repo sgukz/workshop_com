@@ -11,7 +11,7 @@ $("#check_barcode").click(function () {
         let data = JSON.parse(response);
         if (data.status_code === 200) {
           if (data.status_com_check > 0) {
-            window.location = "?page=main-create&cname=" + data.com_name;
+            window.location = "?page=computer-create&cname=" + data.com_name;
           } else {
             Swal.fire({
               title: "แจ้งเตือน",
@@ -44,8 +44,8 @@ $("#check_barcode").click(function () {
   }
 });
 
-$(".delete").click(function () {
-  let base_url = "../controllers/computer/DeleteComputer.php";
+$(".delete-computer").click(function () {
+let base_url = "../controllers/computer/DeleteComputer.php";
   let data_comid = $(this).attr("data-comid");
   Swal.fire({
     title: "แจ้งเตือน",
@@ -117,7 +117,7 @@ $("#form-client").submit((event) => {
         });
         setTimeout(() => {
           if (data.section === "add") {
-            window.location = "?page=main-create&id=" + data.data;
+            window.location = "?page=computer-create&id=" + data.data;
           } else if (data.section === "update") {
             window.location.reload();
           }

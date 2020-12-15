@@ -4,6 +4,7 @@ session_start();
 include '../../config/config_db.php';
 include '../models/DepartmentModel.php';
 include '../models/ComputerModel.php';
+include '../models/PrinterModel.php';
 include '../functions/_function.php';
 
 ?>
@@ -13,7 +14,7 @@ include '../functions/_function.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>จัดการครุภัณฑ์คอมพิวเตอร์</title>
     <link rel="stylesheet" href="../../assets/css/bootstrap.lumen.css">
     <link rel="stylesheet" href="../../assets/css/select2.min.css">
     <link rel="stylesheet" href="../../assets/css/jquery.dataTables.min.css">
@@ -31,12 +32,14 @@ include '../functions/_function.php';
             <div class="col-12">
                 <?php
                 if (isset($_GET["page"])) {
-                    if ($_GET["page"] === "main-create") {
+                    if ($_GET["page"] === "computer-create") {
                         include '../components/form-computer.php';
-                    } else if ($_GET["page"] === "main-showdata") {
+                    } else if ($_GET["page"] === "showdata-computer") {
                         include '../components/showdata-computer.php';
-                    } else if ($_GET["page"] === "main-printer") {
+                    } else if ($_GET["page"] === "printer-create") {
                         include '../components/form-printer.php';
+                    } else if ($_GET["page"] === "showdata-printer") {
+                        include '../components/showdata-printer.php';
                     }
                 }
                 ?>
@@ -54,8 +57,8 @@ include '../functions/_function.php';
 
 <script>
     $(document).ready(() => {
-        $(".select-depart").select2();
-        $("#show-data-com").DataTable();
+        $(".select2").select2();
+        $("#show-data").DataTable();
     });
 </script>
 

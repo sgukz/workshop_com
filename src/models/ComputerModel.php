@@ -26,11 +26,17 @@ function Update($table, $arrayData, $condition)
 {
     $fields = "";
     $i = 1;
+    $str_fix = "NOW()";
     foreach ($arrayData as $key => $value) {
         if ($i != 1) {
             $fields .= ", ";
         }
-        $fields .= "$key = " . "'$value'";
+        if (strpos($value, $str_fix) !== false) {
+            $fields .= "$key = " . "$value";
+        } else {
+            $fields .= "$key = " . "'$value'";
+        }
+        
         $i++;
     }
     $sql = "UPDATE $table SET $fields WHERE $condition";

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">HOME</a>
+        <a class="navbar-brand" href="#">Roi-Et Hospital</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,14 +12,29 @@
                     </a>
                 </li>
             </ul>
+            <?php
+                $active_com = "";
+                $active_print = "";
+                $color_com = "";
+                $color_print = "";
+                if(isset($_GET["page"])){
+                    if($_GET["page"] === "showdata-computer"){
+                        $active_com = "active";
+                        $color_com = "text-warning";
+                    }else if($_GET["page"] === "showdata-printer"){
+                        $active_print = "active";
+                        $color_print = "text-warning";
+                    }
+                }
+            ?>
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="?page=main-showdata">
+                <li class="nav-item <?=$active_com?>">
+                    <a class="nav-link <?=$color_com?>" href="?page=showdata-computer">
                         จัดการคอมพิวเตอร์
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?page=main-printer">
+                <li class="nav-item <?=$active_print?>">
+                    <a class="nav-link <?=$color_print?>" href="?page=showdata-printer">
                         จัดการปริ้นเตอร์
                     </a>
                 </li>

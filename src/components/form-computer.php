@@ -34,7 +34,7 @@ $harddisk_size = ($data_com["harddisk_size"] !== null) ? $data_com["harddisk_siz
         <h3 class="text-warning font-weight-bold">ข้อมูลครุภัณฑ์คอมพิวเตอร์</h3>
     </div>
     <div class="card-body">
-        <a href="?page=main-showdata" class="btn btn-outline-success">รายการคอมพิวเตอร์ทั้งหมด</a> <br><br>
+        <a href="?page=showdata-computer" class="btn btn-outline-success">รายการคอมพิวเตอร์ทั้งหมด</a> <br><br>
         <?php if (isset($com_name) && $com_name !== null) { ?>
             <div class="alert alert-dismissible alert-warning">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -114,7 +114,7 @@ $harddisk_size = ($data_com["harddisk_size"] !== null) ? $data_com["harddisk_siz
                 <label for="department" class="text-primary font-weight-bold">
                     <span>หน่วยงาน <strong class="text-danger">*</strong></span>
                 </label>
-                <select name="department" id="department" class="form-control select-depart" required>
+                <select name="department" id="department" class="form-control select2" required>
                     <option value="" disabled selected>เลือกหน่วยงาน</option>
                     <?php
                     $get_dep = getDep();
