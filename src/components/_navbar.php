@@ -38,6 +38,16 @@
                         จัดการปริ้นเตอร์
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light font-weight-bold" href="#">
+                        <?=isset($_SESSION["user_login"])? $_SESSION["user_login"] : ""?>
+                    </a>
+                </li>
+                <li class="nav-item <?=$active_print?>">
+                    <a class="btn btn-danger btn-sm nav-link font-weight-bold" id="logout">
+                        ออกจากระบบ
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

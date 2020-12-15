@@ -42,7 +42,7 @@ $("#form-login").submit((e) => {
                 /////////////////////////
             })
             .fail((error) => {
-                console.log(JSON.parse(error));
+                console.log(error);
             });
     }
     e.preventDefault();

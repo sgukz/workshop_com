@@ -87,7 +87,8 @@ let base_url = "../controllers/computer/DeleteComputer.php";
   });
 });
 
-$("#logout").click(() => {
+$("#logout").click((e) => {
+  e.preventDefault();
   Swal.fire({
     title: "คุณต้องการออกจากระบบใช่หรือไม่?",
     showCancelButton: true,
