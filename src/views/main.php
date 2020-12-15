@@ -18,6 +18,7 @@ include '../functions/_function.php';
     <link rel="stylesheet" href="../../assets/css/bootstrap.lumen.css">
     <link rel="stylesheet" href="../../assets/css/select2.min.css">
     <link rel="stylesheet" href="../../assets/css/jquery.dataTables.min.css">
+    <link rel="icon" href="../../assets/img/icon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 </head>
 
