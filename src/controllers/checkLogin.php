@@ -3,11 +3,13 @@ session_start();
 include '../../config/config_db.php';
 include '../models/LoginModel.php';
 if (isset($_POST)) {
+    $login = new Login();
     $username = trim($_POST["username"]);
     $password = md5(trim($_POST["password"]));
 
-    $sql_check_login = Login($username, $password);
-    $query_check_login = $conn_main->query($sql_check_login);
+    $set_check_login = $login->setUserLogin($username, $password);
+    $get_check_login = $login->getUserLogin();
+    $query_check_login = $conn_main->query($get_check_login);
     $checkData = $query_check_login->num_rows;
     $resp = [];
     //Case login successfuly

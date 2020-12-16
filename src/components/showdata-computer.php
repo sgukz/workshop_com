@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 <?php
-                $query_get_com = getDataAll();
+                $query_get_com = $computer->getDataAll();
                 $get_com = $conn_main->query($query_get_com);
                 $no = 1;
                 while ($rs_com = $get_com->fetch_assoc()) {
@@ -31,7 +31,7 @@
                     $com_ipaddress = $rs_com["Com_IP_Address"];
                     $com_created_at = $rs_com["Com_Date"];
                     $dept_id = $rs_com["Dep_ID"];
-                    $sql_get_dep = getDepartmentByID($dept_id);
+                    $sql_get_dep = $dept->getDepartmentByID($dept_id);
                     $query_get_dep = $conn_backoffice->query($sql_get_dep);
                     $data_dept = $query_get_dep->fetch_assoc();
                     $dept_name = $data_dept["dept_name"];

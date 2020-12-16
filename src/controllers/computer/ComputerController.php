@@ -1,6 +1,8 @@
 <?php
 include '../../../config/config_db.php';
 include '../../models/ComputerModel.php';
+$computer = new Computer();
+$db = new DB();
 $pattern_com_barcode = "";
 
 $table_com = "com";
@@ -34,10 +36,10 @@ if (isset($_POST["is_submit"])) {
             "status" => 1,
         ];
         $condition = "Com_number = '{$_POST["cnum"]}'";
-        $query_com_update = Update($table_com, $arrDataCom, $condition);
+        $query_com_update = $db->Update($table_com, $arrDataCom, $condition);
         $update_com = $conn_main->query($query_com_update);
         $condition_cr_com = "computer_barcode = '{$_POST["cnum"]}'";
-        $query_cr_com_update = Update("cr_computer", $arrCrComputer, $condition_cr_com);
+        $query_cr_com_update = $db->Update("cr_computer", $arrCrComputer, $condition_cr_com);
         $update_cr_com = $conn_backoffice->query($query_cr_com_update);
         if ($update_com) {
             $resp = [
@@ -63,7 +65,7 @@ if (isset($_POST["is_submit"])) {
             $month_ = (int)date("m");
             $fix_com_barcode = "C" . $year_ . "" . $month_; //C6312
             $new_order = str_pad(1, 4, '0', STR_PAD_LEFT); //0001
-            $sql = getComputerBarcode($fix_com_barcode);
+            $sql = $computer->getComputerBarcode($fix_com_barcode);
             $query = $conn_backoffice->query($sql);
             $getData = $query->fetch_assoc();
             if ($getData["computer_barcode"] !== null) {
@@ -88,7 +90,7 @@ if (isset($_POST["is_submit"])) {
                 "hardisk_size" => $_POST["harddisk_type"] . " " . $_POST["harddisk_size"],
                 "status" => 1,
             ];
-            $query_cr_computer = Insert("cr_computer", $arrCrComputer);
+            $query_cr_computer = $db->Insert("cr_computer", $arrCrComputer);
             $insert_cr_computer = $conn_backoffice->query($query_cr_computer);
         } else {
             $computer_number = $_POST["cnum"];
@@ -103,7 +105,7 @@ if (isset($_POST["is_submit"])) {
                 "hardisk_size" => $_POST["harddisk_type"] . " " . $_POST["harddisk_size"],
             ];
             $condition_cr_com = "computer_barcode = '$computer_number'";
-            $query_cr_com_update = Update("cr_computer", $arrDataCrComputer, $condition_cr_com);
+            $query_cr_com_update = $db->Update("cr_computer", $arrDataCrComputer, $condition_cr_com);
             $update_cr_com = $conn_backoffice->query($query_cr_com_update);
         }
         $cnum = $pattern_com_barcode !== "" ? $pattern_com_barcode : strtoupper($_POST["cnum"]);
@@ -125,7 +127,7 @@ if (isset($_POST["is_submit"])) {
             "Dep_ID" => $_POST["department"],
         ];
 
-        $query_com = Insert($table_com, $arrDataCom);
+        $query_com = $db->Insert($table_com, $arrDataCom);
         $insert_com = $conn_main->query($query_com);
 
         if ($insert_com) {

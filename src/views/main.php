@@ -5,7 +5,12 @@ include '../../config/config_db.php';
 include '../models/DepartmentModel.php';
 include '../models/ComputerModel.php';
 include '../models/PrinterModel.php';
+include '../models/ManageModel.php';
 include '../functions/_function.php';
+$computer = new Computer();
+$printer = new Printer();
+$dept = new Department();
+$db = new DB();
 
 ?>
 <!DOCTYPE html>
@@ -34,6 +39,7 @@ include '../functions/_function.php';
         <div class="row">
             <div class="col-12">
                 <?php
+                
                 if (isset($_GET["page"])) {
                     if ($_GET["page"] === "computer-create") {
                         include '../components/form-computer.php';
@@ -63,7 +69,7 @@ include '../functions/_function.php';
         $(".select2").select2();
         $("#show-data").DataTable({
             "lengthMenu": [
-                [10,25, 50, 100, -1],
+                [10, 25, 50, 100, -1],
                 [10, 25, 50, 100, "ทั้งหมด"]
             ],
             "oLanguage": {

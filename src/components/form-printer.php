@@ -1,6 +1,6 @@
 <?php
 $printer_id = isset($_GET["printer_id"]) ? $_GET["printer_id"] : "";
-$sql_get_printer = getCheckPrinterById($printer_id);
+$sql_get_printer = $printer->getCheckPrinterById($printer_id);
 $query_get_printer = $conn_main->query($sql_get_printer);
 $data_printer = $query_get_printer->fetch_assoc();
 $p_equip = $data_printer["printer_equip"];
@@ -70,7 +70,7 @@ $p_detail = $data_printer["printer_detail"];
                 <select name="p_dept" id="p_dept" class="form-control select2" required>
                     <option value="0" disabled selected>เลือกหน่วยงาน</option>
                     <?php
-                    $get_dep = getDep();
+                    $get_dep = $dept->getDepartment();
                     $query_dep = $conn_backoffice->query($get_dep);
                     while ($rows = $query_dep->fetch_assoc()) {
                         $dep_id = $rows["dept_id"];

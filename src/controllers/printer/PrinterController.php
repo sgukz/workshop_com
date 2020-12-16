@@ -2,6 +2,9 @@
 include '../../../config/config_db.php';
 include '../../models/ComputerModel.php';
 include '../../models/PrinterModel.php';
+include '../../models/ManageModel.php';
+$db = new DB();
+$printer = new Printer();
 $pattern_printer_barcode = "";
 // is_add_new = 1 ### This is add data new
 if ($_POST["is_add_new"] == "add") {
@@ -10,7 +13,7 @@ if ($_POST["is_add_new"] == "add") {
         $month_ = (int)date("m");
         $fix_printer_barcode = "P" . $year_ . "" . $month_; //C6312
         $new_order = str_pad(1, 4, '0', STR_PAD_LEFT); //0001
-        $sql = getPrinterByBarcode($fix_printer_barcode);
+        $sql = $printer->getPrinterByBarcode($fix_printer_barcode);
         $query = $conn_backoffice->query($sql);
         $getData = $query->fetch_assoc();
         if ($getData["printer_barcode"] !== null) {
@@ -31,11 +34,11 @@ if ($_POST["is_add_new"] == "add") {
             "printer_inpdate" => "NOW()",
             "status" => 1
         ];
-        $checkDuplicatePrinter = getPrinterById($pattern_printer_barcode);
+        $checkDuplicatePrinter = $printer->getPrinterById($pattern_printer_barcode);
         $query_check = $conn_backoffice->query($checkDuplicatePrinter);
         $num_row_duplicate = $query_check->num_rows;
         if ($num_row_duplicate === 0) {
-            $query_cr_printer = Insert("cr_printer", $arrCrPrinetr);
+            $query_cr_printer = $db->Insert("cr_printer", $arrCrPrinetr);
             $insert_cr_printer = $conn_backoffice->query($query_cr_printer);
             if ($conn_backoffice->error) {
                 $resp = [
@@ -55,7 +58,7 @@ if ($_POST["is_add_new"] == "add") {
             "dept_addr" => $_POST["p_detail"],
         ];
         $condition_printer = "printer_barcode = '$printer_barcode'";
-        $query_cr_printer_update = Update("cr_printer", $arrCrPrinter, $condition_printer);
+        $query_cr_printer_update = $db->Update("cr_printer", $arrCrPrinter, $condition_printer);
         $update_cr_printer = $conn_backoffice->query($query_cr_printer_update);
     }
     $pnum = $pattern_printer_barcode !== "" ? $pattern_printer_barcode : strtoupper($_POST["pnum"]);
@@ -68,7 +71,7 @@ if ($_POST["is_add_new"] == "add") {
         "printer_dep_id" => $_POST["p_dept"],
         "created_date" => "NOW()",
     ];
-    $query_add_printer = Insert("printer", $arrDataPrinter);
+    $query_add_printer = $db->Insert("printer", $arrDataPrinter);
     $insert_printer = $conn_main->query($query_add_printer);
 
     if ($insert_printer) {
@@ -107,9 +110,9 @@ if ($_POST["is_add_new"] == "add") {
         "updated_date" => "NOW()",
     ];
 
-    $query_cr_printer_update = Update("cr_printer", $arrCrPrinetr, $condition_printer);
+    $query_cr_printer_update = $db->Update("cr_printer", $arrCrPrinetr, $condition_printer);
     $update_cr_printer = $conn_backoffice->query($query_cr_printer_update);
-    $query_printer_update = Update("printer", $arrDataPrinter, $condition_printer);
+    $query_printer_update = $db->Update("printer", $arrDataPrinter, $condition_printer);
     $update_printer = $conn_main->query($query_printer_update);
 
     if ($update_printer) {

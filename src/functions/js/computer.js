@@ -8,6 +8,7 @@ $("#check_barcode").click(function () {
       data: `id=${com_num}`,
     })
       .done((response) => {
+        // console.log(response);
         let data = JSON.parse(response);
         if (data.status_code === 200) {
           if (data.status_com_check > 0) {

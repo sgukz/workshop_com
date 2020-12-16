@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="nav-item <?=$active_print?>">
-                    <a class="btn btn-danger btn-sm nav-link font-weight-bold" id="logout">
+                    <a class="btn btn-danger btn-sm nav-link font-weight-bold text-light" id="logout">
                         ออกจากระบบ
                     </a>
                 </li>

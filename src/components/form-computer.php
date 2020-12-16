@@ -1,7 +1,7 @@
 <?php
 $com_number = "";
 if (isset($_GET["cname"])) {
-    $checkData = getComputerByName($_GET["cname"]);
+    $checkData = $computer->getComputerByName($_GET["cname"]);
     $query_data = $conn_main->query($checkData);
     $get_data = $query_data->fetch_assoc();
     $com_name = $get_data["Com_name"];
@@ -10,7 +10,7 @@ if (isset($_GET["cname"])) {
     $com_number = isset($_GET["id"]) ? $_GET["id"] : "";
 }
 
-$getComputerByID = getComputerByID($com_number);
+$getComputerByID = $computer->getComputerByID($com_number);
 $queryComputerByID = $conn_main->query($getComputerByID);
 $data_com = $queryComputerByID->fetch_assoc();
 $cnum = ($data_com["Com_number"] !== null) ? $data_com["Com_number"] : "";
@@ -117,7 +117,7 @@ $harddisk_size = ($data_com["harddisk_size"] !== null) ? $data_com["harddisk_siz
                 <select name="department" id="department" class="form-control select2" required>
                     <option value="" disabled selected>เลือกหน่วยงาน</option>
                     <?php
-                    $get_dep = getDep();
+                    $get_dep = $dept->getDepartment();
                     $query_dep = $conn_backoffice->query($get_dep);
                     while ($rows = $query_dep->fetch_assoc()) {
                         $dep_id = $rows["dept_id"];

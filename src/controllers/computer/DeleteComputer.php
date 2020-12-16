@@ -1,9 +1,10 @@
 <?php
 include '../../../config/config_db.php';
 include '../../models/ComputerModel.php';
+$computer = new Computer();
 $resp = [];
 $id = $_GET["id"];
-$del_com = Delete($id);
+$del_com = $computer->Delete($id);
 $query_com = $conn_main->query($del_com);
 if ($query_com) {
     $resp = [

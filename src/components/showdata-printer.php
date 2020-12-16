@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 <?php
-                $sql_get_printer = getPrinterAll();
+                $sql_get_printer = $printer->getPrinterAll();
                 $query_printer = $conn_main->query($sql_get_printer);
                 $no = 1;
                 while ($data_printer = $query_printer->fetch_assoc()) {
@@ -29,7 +29,7 @@
                     $printer_equip = $data_printer["printer_equip"];
                     $printer_dep_id = $data_printer["printer_dep_id"];
                     $created_date = DateTimeThai($data_printer["created_date"]);
-                    $sql_get_dep = getDepartmentByID($printer_dep_id);
+                    $sql_get_dep = $department->getDepartmentByID($printer_dep_id);
                     $query_get_dep = $conn_backoffice->query($sql_get_dep);
                     $data_dept = $query_get_dep->fetch_assoc();
                     $dept_name = $data_dept["dept_name"];

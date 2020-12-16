@@ -1,9 +1,10 @@
 <?php
 include '../../../config/config_db.php';
 include '../../models/PrinterModel.php';
+$printer = new Printer();
 $resp = [];
 $id = $_GET["id"];
-$del_printer = DeletePrinter($id);
+$del_printer = $printer->DeletePrinter($id);
 $query_printer = $conn_main->query($del_printer);
 if ($query_printer) {
     $resp = [

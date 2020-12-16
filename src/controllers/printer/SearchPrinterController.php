@@ -1,16 +1,16 @@
 <?php
 include '../../../config/config_db.php';
 include '../../models/PrinterModel.php';
-
+$printer = new Printer();
 $printer_barcode = strtoupper(trim($_GET["id"]));
 // echo $printer_barcode;
-$sql_printer_barcode = getPrinterById($printer_barcode);
+$sql_printer_barcode = $printer->getPrinterById($printer_barcode);
 $query_printer_barcode = $conn_backoffice->query($sql_printer_barcode);
 $num_row = $query_printer_barcode->num_rows;
 $resp = [];
 if ($num_row > 0) {
     $data_printer = $query_printer_barcode->fetch_assoc();
-    $sql_printer = getCheckPrinterById($data_printer["printer_barcode"]);
+    $sql_printer = $printer->getCheckPrinterById($data_printer["printer_barcode"]);
     $query_printer = $conn_main->query($sql_printer);
     $num_printer = $query_printer->num_rows;
     if ($num_printer > 0) {

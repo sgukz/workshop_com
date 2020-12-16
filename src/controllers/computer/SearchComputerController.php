@@ -1,15 +1,16 @@
 <?php
 include '../../../config/config_db.php';
 include '../../models/ComputerModel.php';
-
+$computer = new Computer();
 $barcode = strtoupper(trim($_GET["id"])); //C63020001
-$sql_barcode = getComputerByBarcode($barcode);
+$sql_barcode = $computer->getComputerByBarcode($barcode);
 $query_barcode = $conn_backoffice->query($sql_barcode);
 $num_row = $query_barcode->num_rows;
 $resp = [];
+
 if($num_row > 0){
     $data_com = $query_barcode->fetch_assoc();
-    $sql_com = getComputerByID($data_com["computer_barcode"]);
+    $sql_com = $computer->getComputerByID($data_com["computer_barcode"]);
     $query_com = $conn_main->query($sql_com);
     $num_com = $query_com->num_rows;
     $computer_name = "";
