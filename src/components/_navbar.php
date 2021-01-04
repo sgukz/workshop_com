@@ -15,8 +15,10 @@
             <?php
                 $active_com = "";
                 $active_print = "";
+                $active_report = "";
                 $color_com = "";
                 $color_print = "";
+                $color_report = "";
                 if(isset($_GET["page"])){
                     if($_GET["page"] === "showdata-computer"){
                         $active_com = "active";
@@ -24,6 +26,9 @@
                     }else if($_GET["page"] === "showdata-printer"){
                         $active_print = "active";
                         $color_print = "text-warning";
+                    }else if($_GET["page"] === "show-report"){
+                        $active_report = "active";
+                        $color_report = "text-warning";
                     }
                 }
             ?>
@@ -36,6 +41,11 @@
                 <li class="nav-item <?=$active_print?>">
                     <a class="nav-link <?=$color_print?> font-weight-bold" href="?page=showdata-printer">
                         จัดการปริ้นเตอร์
+                    </a>
+                </li>
+                <li class="nav-item <?=$active_report?>">
+                    <a class="nav-link <?=$color_report?> font-weight-bold" href="?page=show-report">
+                        รายงาน
                     </a>
                 </li>
                 <li class="nav-item">

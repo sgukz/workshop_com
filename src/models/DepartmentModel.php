@@ -7,7 +7,7 @@ class Department
         return $sql;
     }
 
-    public function getDepartmentByID($id)
+    public static function getDepartmentByID($id)
     {
         $sql = "SELECT dept_name FROM cr_department WHERE dept_id = '$id'";
         return $sql;

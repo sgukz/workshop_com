@@ -22,6 +22,7 @@ $db = new DB();
     <title>จัดการครุภัณฑ์คอมพิวเตอร์</title>
     <link rel="stylesheet" href="../../assets/css/bootstrap.lumen.css">
     <link rel="stylesheet" href="../../assets/css/select2.min.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="stylesheet" href="../../assets/css/jquery.dataTables.min.css">
     <link rel="icon" href="../../assets/img/icon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
@@ -49,6 +50,8 @@ $db = new DB();
                         include '../components/form-printer.php';
                     } else if ($_GET["page"] === "showdata-printer") {
                         include '../components/showdata-printer.php';
+                    } else if ($_GET["page"] === "show-report") {
+                        include '../components/report.php';
                     }
                 }
                 ?>
@@ -63,6 +66,7 @@ $db = new DB();
 <script src="../../assets/js/jquery.dataTables.min.js"></script>
 <script src="../functions/js/printer.js"></script>
 <script src="../functions/js/computer.js"></script>
+<script src="../functions/js/report.js"></script>
 
 <script>
     $(document).ready(() => {
