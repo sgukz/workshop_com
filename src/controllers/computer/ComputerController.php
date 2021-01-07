@@ -1,6 +1,7 @@
 <?php
 include '../../../config/config_db.php';
 include '../../models/ComputerModel.php';
+include '../../models/ManageModel.php';
 $computer = new Computer();
 $db = new DB();
 $pattern_com_barcode = "";

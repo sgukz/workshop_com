@@ -40,7 +40,6 @@ $db = new DB();
         <div class="row">
             <div class="col-12">
                 <?php
-                
                 if (isset($_GET["page"])) {
                     if ($_GET["page"] === "computer-create") {
                         include '../components/form-computer.php';
@@ -94,4 +93,4 @@ $db = new DB();
     });
 </script>
 
-</html>`
+</html>
