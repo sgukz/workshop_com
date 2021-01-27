@@ -11,13 +11,39 @@ include '../../config/config_db.php';
 include '../models/DepartmentModel.php';
 
 $where_condition = $totalCom = $totalPrinter = "";
+// if($is_equip == "true" && $not_equip == "true"){
+//     $where_condition .= " GROUP BY Dep_ID";
+//   }else if($is_equip == "true" && $not_equip == "false"){
+//     $where_condition .= " WHERE Com_Equip <> '' AND Com_Equip <> 'ไม่มี' AND Com_Equip IS NOT NULL GROUP BY Dep_ID";
+//   }else if($is_equip == "false" && $not_equip == "true"){
+//     $where_condition .= " WHERE Com_Equip = '' OR Com_Equip = 'ไม่มี' OR Com_Equip IS NULL GROUP BY Dep_ID";
+//   }else{
+//     $where_condition .= " GROUP BY Dep_ID";
+//   }
 $sql_query = "SELECT Dep_ID, COUNT(*) as cntCom FROM com ";
 if ($params['dep_id'] === "all") {
-    $where_condition .= " GROUP BY Dep_ID ORDER BY cntCom";
+    if ($params["is_equip"] == "true" && $params["notequip"] == "true") {
+        $where_condition .= " GROUP BY Dep_ID";
+    } else if ($params["is_equip"] == "true" && $params["notequip"] == "false") {
+        $where_condition .= " WHERE Com_Equip <> '' AND Com_Equip <> 'ไม่มี' AND Com_Equip IS NOT NULL GROUP BY Dep_ID";
+    } else if ($params["is_equip"] == "false" && $params["notequip"] == "true") {
+        $where_condition .= " WHERE Com_Equip = '' OR Com_Equip = 'ไม่มี' OR Com_Equip IS NULL GROUP BY Dep_ID";
+    } else {
+        $where_condition .= " GROUP BY Dep_ID";
+    }
 } else {
-    $where_condition .= " WHERE Dep_ID = '{$params['dep_id']}' GROUP BY Dep_ID ORDER BY cntCom";
+    if ($params["is_equip"] == "true" && $params["not_equip"] == "true") {
+        $where_condition .= " WHERE Dep_ID = '{$params['dep_id']}' GROUP BY Dep_ID";
+    } else if ($params["is_equip"] == "true" && $params["not_equip"] == "false") {
+        $where_condition .= " WHERE Dep_ID = '{$params['dep_id']}' AND Com_Equip <> '' AND Com_Equip <> 'ไม่มี' AND Com_Equip IS NOT NULL GROUP BY Dep_ID";
+    } else if ($params["is_equip"] == "false" && $params["not_equip"] == "true") {
+        $where_condition .= " WHERE Dep_ID = '{$params['dep_id']}' AND Com_Equip = '' OR Com_Equip = 'ไม่มี' OR Com_Equip IS NULL GROUP BY Dep_ID";
+    } else {
+        $where_condition .= " WHERE Dep_ID = '{$params['dep_id']}' GROUP BY Dep_ID";
+    }
 }
 $sql_query .= $where_condition;
+$sql_query .= " ORDER BY cntCom";
 $query = $conn_main->query($sql_query);
 $checkData = $query->num_rows;
 if ($checkData > 0) {

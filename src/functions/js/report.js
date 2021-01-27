@@ -97,7 +97,7 @@ $("#search-report").submit(function (e) {
         },
       ],
     });
-    let btnExport = `<a href="export_excel.php?dep_id=${department}" class="btn btn-success mt-3 ml-2">
+    let btnExport = `<a href="export_excel.php?dep_id=${department}&is_equip=${is_equip}&notequip=${not_equip}" class="btn btn-success mt-3 ml-2">
                       <i class="fa fa-file-excel" aria-hidden="true"></i>&nbsp;&nbsp;Export
                     </a>`;
     $("#export_report").html(btnExport);

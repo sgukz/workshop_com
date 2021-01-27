@@ -21,7 +21,15 @@ if ($_POST) {
       $where_condition .= " GROUP BY Dep_ID";
     }
   } else {
-    $where_condition .= " WHERE Dep_ID = '{$dep_id}' GROUP BY Dep_ID";
+    if($is_equip == "true" && $not_equip == "true"){
+      $where_condition .= " WHERE Dep_ID = '{$dep_id}' GROUP BY Dep_ID";
+    }else if($is_equip == "true" && $not_equip == "false"){
+      $where_condition .= " WHERE Dep_ID = '{$dep_id}' AND Com_Equip <> '' AND Com_Equip <> 'ไม่มี' AND Com_Equip IS NOT NULL GROUP BY Dep_ID";
+    }else if($is_equip == "false" && $not_equip == "true"){
+      $where_condition .= " WHERE Dep_ID = '{$dep_id}' AND Com_Equip = '' OR Com_Equip = 'ไม่มี' OR Com_Equip IS NULL GROUP BY Dep_ID";
+    }else{
+      $where_condition .= " WHERE Dep_ID = '{$dep_id}' GROUP BY Dep_ID";
+    }
   }
   $sql_query = "SELECT Dep_ID, COUNT(*) as cntCom FROM com ";
   $sqlTot .= $sql_query;
