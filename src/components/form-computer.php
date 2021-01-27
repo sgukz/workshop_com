@@ -14,7 +14,7 @@ $getComputerByID = $computer->getComputerByID($com_number);
 $queryComputerByID = $conn_main->query($getComputerByID);
 $data_com = $queryComputerByID->fetch_assoc();
 $cnum = ($data_com["Com_number"] !== null) ? $data_com["Com_number"] : "";
-$cname = ($data_com["Com_name"] !== null) ? $data_com["Com_name"] : gethostbyaddr($_SERVER['REMOTE_ADDR']);
+$cname = ($data_com["Com_name"] !== null) ? $data_com["Com_name"] : (isset($_GET["cname"]) ? $_GET["cname"] : gethostbyaddr($_SERVER['REMOTE_ADDR']));
 $equip = ($data_com["Com_Equip"] !== null) ? $data_com["Com_Equip"] : "";
 $model = ($data_com["Com_Brand"] !== null) ? $data_com["Com_Brand"] : (isset($_GET["model"]) ? $_GET["model"] : "");
 $ram = ($data_com["Com_RAM"] !== null) ? $data_com["Com_RAM"] : (isset($_GET["ram"]) ? $_GET["ram"] : "");

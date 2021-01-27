@@ -5,7 +5,7 @@
     <div class="card-body">
         <div class="row mb-3">
             <div class="col-12">
-                <form class="form-inline" id="search-report">
+                <form class="form-inline" id="search-report" method="post">
                     <div class="form-group col-4">
                         <label for="email">หน่วยงาน </label>
                         <select name="department" id="department" class="form-control select2" required>
@@ -27,17 +27,17 @@
                     </div>
                     <div class="form-group col-8">
                         <div class="form-check mt-3">
-                            <!-- <label class="form-check-label">
-                                <input class="form-check-input" id="is_computer" type="checkbox"> คอมพิวเตอร์
-                                <input class="form-check-input ml-3" id="is_printer" type="checkbox"> ปริ้นเตอร์
-                            </label> -->
-                            <button type="button" class="btn btn-primary" id="check-search-report">
+                            <label class="form-check-label">
+                                <input class="form-check-input"  id="is_equip" type="checkbox" value="true"> <label for="is_equip">มีเลขครุภัณฑ์</label>
+                                <input class="form-check-input ml-3" id="not_equip" type="checkbox" value="true"> <label for="not_equip">ไม่มีเลขครุภัณฑ์</label>
+                            </label>
+                            <button type="submit" class="btn btn-primary ml-2" id="check-search-report">
                                <i class="fa fa-search"></i> ค้นหา
                             </button>
                         </div>
                         <div id="export_report">    
                         </div>
-
+                        <input type="hidden" name="page" value="show-report">
                     </div>
                     <div class="form-group col-3">
                     </div>

@@ -1,6 +1,57 @@
-$("#check-search-report").click(function (e) {
-  let selectedDept = $("#department").children("option:selected").val().trim();
+let is_equip = $("#is_equip").val();
+let not_equip = $("#not_equip").val();
+$("#is_equip").click(function () {
+  if ($(this).is(":checked")) {
+    if ($("#not_equip").is(":checked")) {
+      is_equip = true;
+      not_equip = true;
+    } else {
+      is_equip = true;
+      not_equip = false;
+    }
+  } else if ($(this).is(":not(:checked)")) {
+    if ($("#not_equip").is(":checked")) {
+      is_equip = false;
+      not_equip = true;
+    } else {
+      is_equip = false;
+      not_equip = false;
+    }
+  }
+});
+$("#not_equip").click(function () {
+  if ($(this).is(":checked")) {
+    if ($("#is_equip").is(":checked")) {
+      not_equip = true;
+      is_equip = true;
+    } else {
+      is_equip = false;
+      not_equip = true;
+    }
+  } else if ($(this).is(":not(:checked)")) {
+    if ($("#is_equip").is(":checked")) {
+      not_equip = false;
+      is_equip = true;
+    } else {
+      is_equip = false;
+      not_equip = false;
+    }
+  }
+});
+// $.ajax({
+//   method: "POST",
+//   url: base_url,
+//   data: {
+//     dep_id: department,
+//     is_equip: is_equip,
+//     not_equip: not_equip,
+//   },
+// }).done((response) => {
+//   console.log(response);
+// });
+$("#search-report").submit(function (e) {
   let base_url = "../controllers/reports/ReportController.php";
+  let department = $("#department").children("option:selected").val().trim();
   Swal.fire({
     title: '<div class="lds-dual-ring"></div>',
     html: '<strong class="text-primary">กำลังประมวลผล...</strong>',
@@ -28,10 +79,17 @@ $("#check-search-report").click(function (e) {
         url: base_url,
         type: "POST",
         data: {
-          dep_id: selectedDept,
+          dep_id: department,
+          is_equip: is_equip,
+          not_equip: not_equip,
         },
       },
-      columns: [{ data: "order" }, { data: "dep_name" }, { data: "count_com" }, { data: "count_printer" }],
+      columns: [
+        { data: "order" },
+        { data: "dep_name" },
+        { data: "count_com" },
+        { data: "count_printer" },
+      ],
       columnDefs: [
         {
           targets: [0, 2, 3],
@@ -39,25 +97,11 @@ $("#check-search-report").click(function (e) {
         },
       ],
     });
-    let btnExport = `<a href="export_excel.php?dep_id=${selectedDept}" class="btn btn-success mt-3 ml-2">
+    let btnExport = `<a href="export_excel.php?dep_id=${department}" class="btn btn-success mt-3 ml-2">
                       <i class="fa fa-file-excel" aria-hidden="true"></i>&nbsp;&nbsp;Export
                     </a>`;
     $("#export_report").html(btnExport);
     Swal.close();
   }, 1000);
   e.preventDefault();
-  // $.ajax({
-  //   method: "POST",
-  //   url: base_url,
-  //   data: {
-  //     dep_id: selectedDept,
-  //   },
-  // })
-  //   .done((resp) => {
-  //     // let data = JSON.parse(resp);
-  //     console.log(resp);
-  //   })
-  //   .fail((error) => {
-  //     console.log(error);
-  //   });
 });

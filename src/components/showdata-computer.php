@@ -9,6 +9,7 @@
                 <tr>
                     <th class="text-center">#</th>
                     <th class="text-center">เลขทะเบียนคอมพิวเตอร์</th>
+                    <th class="text-center">เลขครุภัณฑ์</th>
                     <th class="text-center">หน่วยงาน</th>
                     <th class="text-center">ที่ตั้ง</th>
                     <th class="text-center">ชื่อเครื่อง</th>
@@ -26,6 +27,7 @@
                 while ($rs_com = $get_com->fetch_assoc()) {
                     $com_number = $rs_com["Com_number"];
                     $com_name = $rs_com["Com_name"];
+                    $com_equip = $rs_com["Com_Equip"];
                     $com_osversion = $rs_com["Com_OS_Version"];
                     $com_detail = $rs_com["Com_Detail"];
                     $com_ipaddress = $rs_com["Com_IP_Address"];
@@ -39,6 +41,7 @@
                     <tr>
                         <td class="text-center"><?= $no ?></td>
                         <td class="text-center"><?= $com_number ?></td>
+                        <td class="text-center"><?= $com_equip ?></td>
                         <td class="text-center"><?= $dept_name ?></td>
                         <td class="text-center"><?= $com_detail ?></td>
                         <td class="text-center"><?= $com_name ?></td>

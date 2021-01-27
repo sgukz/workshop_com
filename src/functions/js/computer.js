@@ -110,7 +110,6 @@ $("#form-client").submit((event) => {
     data: $("#form-client").serialize(),
   })
     .done((response) => {
-      console.log(response);
       let data = JSON.parse(response);
       if (data.status_code === 200) {
         Swal.fire({
